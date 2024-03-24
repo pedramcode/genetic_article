@@ -90,7 +90,7 @@ class World:
         return [offspring1, offspring2]
 
     def mutate(self, c: Chromosome) -> None:
-        MUTATIONS = ["RANDOM", "SWAP", "INVERSION", "ADDITION", "DELETATION"]
+        MUTATIONS = ["RANDOM", "SWAP", "INVERSION", "ADDITION", "DELETION"]
         selected_mutation = choice(MUTATIONS)
         
         if len(c.steps) < 3:
@@ -116,7 +116,7 @@ class World:
             c.steps[i1: i2+1] = inverted
         elif selected_mutation == "ADDITION":
             c.steps.insert(randint(0, len(c.steps) - 1), Action(randint(0, 3)))
-        elif selected_mutation == "DELETATION":
+        elif selected_mutation == "DELETION":
             c.steps.pop(randint(0, len(c.steps) - 1))
     
     def is_winner(self, c: Chromosome) -> bool:
